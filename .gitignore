@@ -33,5 +33,5 @@ build/
 .vscode/
 
 #ignore workload
-config/workload.yaml
-Tiltfile
+#config/workload.yaml
+#Tiltfile
