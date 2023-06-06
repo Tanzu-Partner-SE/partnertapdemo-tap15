@@ -1,0 +1,62 @@
+accelerator:
+  displayName: partnertapdemo
+  description: TAP Demo for Tanzu Partners
+  iconUrl: https://raw.githubusercontent.com/dineshtripathi30/icons/master/2438322212642_50d4be51a586eb0dc065_132.png
+  tags:
+  - simple
+  - java
+  - springboot
+  options:
+
+  - name: repositoryPrefix
+    inputType: text
+    label: Prefix for the container image repository
+    defaultValue: tanzudemoreg.azurecr.io/build-service
+    required: true
+  - name: appnamespace
+    inputType: text
+    label: Enter the namespace where application will be deployed
+    defaultValue: default
+    required: true
+  - name: selectMe
+    display: true
+    dataType: boolean
+    defaultValue: true
+  - name: message
+    inputType: textarea
+    display: true
+    defaultValue: |
+      hello
+      tanzu
+engine:
+  merge:
+  - include: [ "**/*" ]
+  #  exclude: [ "config/*.yaml", "Tiltfile", "README.md", "catalog/*.yaml", "partnertapdemo-accelerator.yaml" ]
+  - include: [ "config/*.yaml", "Tiltfile" ]
+    chain:
+    - type: ReplaceText
+      substitutions:
+      - text: partnertapdemo
+        with: "#artifactId"
+    - type: ReplaceText
+      substitutions:
+      - text: your-registry.io/project
+        with: "#repositoryPrefix"
+    - type: ReplaceText
+      substitutions:
+      - text: appnamespace
+        with: "#appnamespace"
+  - include: [ "README.md" ]
+    chain:
+    - type: ReplaceText
+      substitutions:
+      - text: tapdemo
+        with: "#artifactId"
+  - include: [ "catalog/*.yaml" ]
+    chain:
+    - type: ReplaceText
+      substitutions:
+      - text: tapdemo
+        with: "#artifactId"
+    - type: RewritePath
+      rewriteTo: "#filename"
