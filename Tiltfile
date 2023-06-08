@@ -1,6 +1,7 @@
 SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='tanzupartnerworkshop.azurecr.io/tap15/build-service/partnertapdemo-tap-install')
 LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
-NAMESPACE = os.getenv("NAMESPACE", default='tap-dev4')
+#NAMESPACE = os.getenv("NAMESPACE", default='tap-dev4')
+NAMESPACE = 'tap-dev4'
 APPNAME = os.getenv("APP_NAME", default='partnertapdemo')
 CLUSTERNAME = os.getenv("CLUSTER_NAME", default='tap15-aks-fullcluster')
 
