@@ -11,10 +11,10 @@ metadata:
     carto.run/supply-chain-name: source-to-url
     carto.run/template-kind: ClusterTemplate
     carto.run/workload-name: partnertapdemo
-    carto.run/workload-namespace: tap-install
+    carto.run/workload-namespace: tap-dev4
   name: partnertapdemo
-  namespace: tap-install
+  namespace: tap-dev4
 spec:
   serviceAccountName: default
   source:
-    image: tanzupartnerworkshop.azurecr.io/tap12/build-service/partnertapdemo-tap-install-bundle:41c6c14f-05c8-403e-9288-c5d42e3a3602
+    image: tanzupartnerworkshop.azurecr.io/tap15/build-service/partnertapdemo-tap-dev4-bundle:41c6c14f-05c8-403e-9288-c5d42e3a3602
